@@ -1,7 +1,5 @@
-using System.Collections.Generic;
+using System.Linq;
 using ItemChanger;
-using ItemChanger.Extensions;
-using ItemChanger.Internal;
 using ItemChanger.Modules;
 using ItemChanger.Util;
 using UnityEngine;
@@ -11,6 +9,8 @@ namespace FlowerRandomizer.Modules
 {
     public class FlowerPreviewModule : Module
     {
+        public delegate string FlowerPreview();
+        public static event FlowerPreview OnFlowerPreview;
         public override void Initialize()
         {
             Events.AddSceneChangeEdit("Room_Mansion", SpawnMournerTablet);
@@ -44,18 +44,8 @@ namespace FlowerRandomizer.Modules
             if (GameManager._instance.sceneName == SceneNames.Room_Mansion || GameManager._instance.sceneName == SceneNames.Fungus3_49)
             {
                 value = "Available items:";
-                foreach (KeyValuePair<string, AbstractPlacement> placement in Ref.Settings.Placements)
-                {
-                    if (placement.Value.Name.Contains("Flower_Quest"))
-                    {
-                        value += "<br>";
-                        value += placement.Value.Name.Split('-')[1].Replace('_', ' ');
-                        value += " - ";
-                        value += placement.Value.GetUIName();
-                        if (placement.Value.Items.AnyEverObtained())
-                            value += "Obtained";
-                    }
-                }
+                foreach (FlowerPreview handler in OnFlowerPreview.GetInvocationList().Cast<FlowerPreview>())
+                    value += handler.Invoke();
             }
         }
     }

@@ -3,7 +3,6 @@ using FlowerRandomizer.Manager;
 using HutongGames.PlayMaker;
 using HutongGames.PlayMaker.Actions;
 using ItemChanger;
-using ItemChanger.Locations;
 using ItemChanger.Tags;
 using ItemChanger.Util;
 using Modding;
@@ -11,41 +10,20 @@ using Satchel;
 
 namespace FlowerRandomizer.IC
 {
-    public class CustomDialogueFlowerLocation : AutoLocation
+    public class CustomDialogueFlowerLocation : AbstractFlowerLocation
     {
         public string objectName;
         public string dialogueKey;
-        public CustomDialogueFlowerLocation(string _name, string _sceneName, string _objectName, string _dialogueKey, float x, float y)
+        public CustomDialogueFlowerLocation(string _name, string _sceneName, string _objectName, string _dialogueKey)
         {
             name = $"Flower_Quest-{_name}";
             sceneName = _sceneName;
             objectName = _objectName;
             dialogueKey = _dialogueKey;
-            tags = [FlowerLocationTag(x, y)];
-        }
-
-        private InteropTag FlowerLocationTag(float x, float y)
-        {
-            InteropTag tag = new();
-            string mapSceneName = sceneName;
-            Dictionary<string, string> sceneOverride = [];
-            sceneOverride.Add(SceneNames.Room_nailmaster, SceneNames.Cliffs_02);
-            sceneOverride.Add(SceneNames.Room_nailmaster_02, SceneNames.Fungus1_15);
-
-            if (sceneOverride.ContainsKey(sceneName))
-                mapSceneName = sceneOverride[sceneName];
-
-            tag.Properties["ModSource"] = "FlowerRandomizer";
-            tag.Properties["PoolGroup"] = $"Flower Quests";
-            tag.Properties["PinSprite"] = new FlowerSprite("Flower");
-            tag.Properties["VanillaItem"] = name;
-            tag.Properties["MapLocations"] = new (string, float, float)[] {(mapSceneName, x, y)};
-            tag.Message = "RandoSupplementalMetadata";
-
-            return tag;
         }
         protected override void OnLoad()
         {
+            base.OnLoad();
             ModHooks.LanguageGetHook += CustomDialogue;
             Events.AddFsmEdit(sceneName, new (objectName, "Conversation Control"), GiveItem);
             if (name.Contains("Marissa"))
@@ -56,6 +34,7 @@ namespace FlowerRandomizer.IC
 
         protected override void OnUnload()
         {
+            base.OnUnload();
             ModHooks.LanguageGetHook -= CustomDialogue;
             Events.RemoveFsmEdit(sceneName, new (objectName, "Conversation Control"), GiveItem);
             if (objectName.Contains("Marissa"))
@@ -80,10 +59,7 @@ namespace FlowerRandomizer.IC
         private string CustomDialogue(string key, string sheetTitle, string orig)
         {
             LanguageManager manager = new();
-            if (manager.Get(key, sheetTitle) is not null)
-                return manager.Get(key, sheetTitle);
-            else
-                return orig;
+            return manager.Get(key, sheetTitle) ?? orig;
         }
 
         private void GiveItem(PlayMakerFSM fsm)
