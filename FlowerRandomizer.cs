@@ -9,7 +9,7 @@ namespace FlowerRandomizer
     public class FlowerRandomizer : Mod, IGlobalSettings<FlowerSettings> 
     {
         new public string GetName() => "FlowerRandomizer";
-        public override string GetVersion() => "1.0.0.1";
+        public override string GetVersion() => "1.0.0.2";
         private static FlowerRandomizer _instance;
         public FlowerRandomizer() : base()
         {

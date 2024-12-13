@@ -13,9 +13,12 @@ namespace FlowerRandomizer.Modules
         public static event FlowerPreview OnFlowerPreview;
         public override void Initialize()
         {
-            Events.AddSceneChangeEdit("Room_Mansion", SpawnMournerTablet);
-            Events.AddSceneChangeEdit("Fungus3_49", SpawnTraitorTablet);
-            Events.AddLanguageEdit(new("Lore Tablets", "TUT_TAB_02"), FlowerPreviews);
+            if (OnFlowerPreview.GetInvocationList().Cast<FlowerPreview>().Count() > 0)
+            {
+                Events.AddSceneChangeEdit("Room_Mansion", SpawnMournerTablet);
+                Events.AddSceneChangeEdit("Fungus3_49", SpawnTraitorTablet);
+                Events.AddLanguageEdit(new("Lore Tablets", "TUT_TAB_02"), FlowerPreviews);
+            }
         }
 
         public override void Unload()

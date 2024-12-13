@@ -18,9 +18,9 @@ namespace FlowerRandomizer.IC
         {
             string hint;
             if (Placement.AllObtained())
-                hint = $"{name.Split('-')[1].Replace('_', ' ')} - Obtained";
+                hint = $"{name.Split('-')[1].Replace('_', ' ')}: Obtained";
             else
-                hint = $"{name.Split('-')[1].Replace('_', ' ')} - {Placement.GetUIName()}";
+                hint = $"{name.Split('-')[1].Replace('_', ' ')}: {Placement.GetUIName()}";
             Placement.OnPreview(Placement.GetUIName());
             return $"<br>{hint}";
         }

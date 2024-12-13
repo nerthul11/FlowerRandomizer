@@ -36,7 +36,7 @@ namespace FlowerRandomizer.Manager
             lmb.AddLogicDef(new ("Flower_Quest-Isma", "Waterways_13 + DREAMNAIL + NOFLOWER=FALSE"));
             lmb.AddLogicDef(new ("Flower_Quest-Radiance", "*Pale_Ore-Crystal_Peak + DREAMNAIL + NOFLOWER=FALSE"));
             lmb.AddLogicDef(new ("Flower_Quest-Pale_King", "*King_Fragment + NOFLOWER=FALSE"));
-            lmb.AddLogicDef(new ("Flower_Quest-Pain", "White_Palace_20[bot1] + NOFLOWER=FALSE"));
+            lmb.AddLogicDef(new ("Flower_Quest-Pain", "White_Palace_20[bot1] + Completed_Path_of_Pain + NOFLOWER=FALSE"));
         }
     }
 }
