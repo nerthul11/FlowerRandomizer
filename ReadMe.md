@@ -36,7 +36,8 @@ For those who want to do some flower quests on the run, but want to leave which 
 I could detect a few issues with other connections, will list them (and their solutions) here:
 
 - Lore Randomizer:
- - If Isma flower is randomized, Isma's dream dialogue -if also randomized- will be removed from the location pool.
- - If Radiance statue is randomize, its dream dialogue -if also randomized- will be removed from the location pool.
+ - If Isma flower is randomized, Isma's dream dialogue -if also randomized- will be removed from the location pool. If Pale Court is on, only the gods know what will happen. Don't use together.
+ - If Radiance statue flower is randomized, its dream dialogue -if also randomized- will be removed from the location pool.
+ - If Pale King flower is randomized, its dream dialogue -if also randomized- will be removed from the location pool.
 - RandoPlus Ghost Essence:
  - A visual glitch happens when dream nailing Marissa if both mods are on. It has no gameplay consequences.

@@ -2,10 +2,8 @@ using System;
 using System.Collections.Generic;
 using FlowerRandomizer.IC;
 using FlowerRandomizer.Settings;
-using HutongGames.PlayMaker.Actions;
 using ItemChanger;
 using ItemChanger.Tags;
-using Modding;
 using RandomizerMod.RC;
 
 namespace FlowerRandomizer.Manager {
@@ -14,9 +12,8 @@ namespace FlowerRandomizer.Manager {
         internal static void Hook()
         {
             DefineObjects();
-            RequestBuilder.OnUpdate.Subscribe(0f, AddObjects);
-            if (ModHooks.GetMod("LoreRandomizer") is Mod)
-                RequestBuilder.OnUpdate.Subscribe(50f, RemoveLore);
+            RequestBuilder.OnUpdate.Subscribe(0.4f, AddObjects);
+            RequestBuilder.OnUpdate.Subscribe(50f, RemoveLore);
         }
 
         public static InteropTag FlowerTag(string sceneName, float x, float y)
@@ -162,11 +159,16 @@ namespace FlowerRandomizer.Manager {
         }
         private static void RemoveLore(RequestBuilder rb)
         {
+            if (!FlowerManager.Settings.Enabled)
+                return;
+
             // Remove these locations from LoreRando if flower quests are active
-            if (rb.TryGetLocationRequest("Flower_Quest-Isma", out _))
+            if (FlowerManager.Settings.CustomNPCs.Isma)
                 rb.RemoveLocationByName("Isma_Dream");
-            if (rb.TryGetLocationRequest("Flower_Quest-Radiance", out _))
+            if (FlowerManager.Settings.CustomNPCs.Radiance)
                 rb.RemoveLocationByName("Radiance_Statue_Dream");
+            if (FlowerManager.Settings.CustomNPCs.PaleKing)
+                rb.RemoveLocationByName("Pale_King_Dream");
         }
     }
 }

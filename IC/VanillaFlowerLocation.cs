@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using HutongGames.PlayMaker;
 using ItemChanger;
-using ItemChanger.Tags;
 using ItemChanger.Util;
 using Satchel;
 

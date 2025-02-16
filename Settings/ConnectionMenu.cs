@@ -72,8 +72,10 @@ namespace FlowerRandomizer.Settings
             MenuPage vanillaPage = new("Vanilla NPCs", settingsPage);
             MenuLabel header = new(vanillaPage, "Vanilla NPCs");
             vanillaMEF = new(vanillaPage, FlowerManager.Settings.VanillaNPCs);
-            VerticalItemPanel vanillaPanel = new(vanillaPage, new Vector2(0, 400), 60, true, vanillaMEF.Elements);
-            //vanillaPanel.Add(header);
+            VerticalItemPanel vanillaPanel = new(vanillaPage, new Vector2(0, 400), 60, true);
+            vanillaPanel.Add(header);
+            foreach (IValueElement element in vanillaMEF.Elements)
+                vanillaPanel.Add(element);
             vanillaPanel.ResetNavigation();
             vanillaPanel.SymSetNeighbor(Neighbor.Down, vanillaPage.backButton);
             vanillaPanel.SymSetNeighbor(Neighbor.Up, vanillaPage.backButton);
@@ -86,8 +88,10 @@ namespace FlowerRandomizer.Settings
             MenuPage customPage = new("Custom NPCs", settingsPage);
             MenuLabel header = new(customPage, "Custom NPCs");
             customMEF = new(customPage, FlowerManager.Settings.CustomNPCs);
-            VerticalItemPanel customPanel = new(customPage, new Vector2(0, 400), 60, true, customMEF.Elements);
-            //vanillaPanel.Add(header);
+            VerticalItemPanel customPanel = new(customPage, new Vector2(0, 400), 60, true);
+            customPanel.Add(header);
+            foreach (IValueElement element in customMEF.Elements)
+                customPanel.Add(element);
             customPanel.ResetNavigation();
             customPanel.SymSetNeighbor(Neighbor.Down, customPage.backButton);
             customPanel.SymSetNeighbor(Neighbor.Up, customPage.backButton);

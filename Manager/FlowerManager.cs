@@ -3,6 +3,8 @@ using RandomizerMod.Logging;
 using FlowerRandomizer.Settings;
 using FlowerRandomizer.Modules;
 using ItemChanger;
+using RandomizerMod.RC;
+using System;
 
 namespace FlowerRandomizer.Manager
 {
@@ -20,6 +22,9 @@ namespace FlowerRandomizer.Manager
 
         private static void AddFileSettings(LogArguments args, System.IO.TextWriter tw)
         {
+            if (!Settings.Enabled)
+                return;
+
             // Log settings into the settings file
             tw.WriteLine("Flower Randomizer Settings:");
             using JsonTextWriter jtw = new(tw) { CloseOutput = false };
