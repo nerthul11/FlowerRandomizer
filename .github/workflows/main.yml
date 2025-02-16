@@ -32,7 +32,7 @@ jobs:
         id: get_hash
         shell: pwsh
         run: |
-          $hash = (Get-FileHash -Path "Output/Moonside.zip" -Algorithm SHA256).Hash
+          $hash = (Get-FileHash -Path "Output/FlowerRandomizer.zip" -Algorithm SHA256).Hash
           echo "hash=$hash" >> $env:GITHUB_OUTPUT
 
       - name: Get Assembly version
