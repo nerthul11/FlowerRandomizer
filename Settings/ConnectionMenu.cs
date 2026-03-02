@@ -124,7 +124,9 @@ namespace FlowerRandomizer.Settings
 
         public void Apply(FlowerSettings settings)
         {
-            topLevelElementFactory.SetMenuValues(settings);        
+            topLevelElementFactory.SetMenuValues(settings);
+            vanillaMEF.SetMenuValues(settings.VanillaNPCs);
+            customMEF.SetMenuValues(settings.CustomNPCs); 
         }
     }
 }

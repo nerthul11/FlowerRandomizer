@@ -32,6 +32,7 @@ namespace FlowerRandomizer.Manager
             tw.WriteLine();
 
             // Add modules
+            ItemChangerMod.Modules.Add<MoreFlowers>();
             if (args.gs.LongLocationSettings.FlowerQuestPreview)
                 ItemChangerMod.Modules.Add<FlowerPreviewModule>();
         }        

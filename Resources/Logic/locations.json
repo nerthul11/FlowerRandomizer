@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Flower_Quest-Elderbug",
+    "logic": "Town + LISTEN?TRUE + NOFLOWER=FALSE"
+  },
+  {
+    "name": "Flower_Quest-Emilitia",
+    "logic": "(Ruins_House_03[left1] | (ANYCLAW + Ruins_House_03[left2])) + LISTEN?TRUE + NOFLOWER=FALSE"
+  },
+  {
+    "name": "Flower_Quest-Godseeker",
+    "logic": "GG_Waterways + GODTUNERUNLOCK + LISTEN?TRUE + Defeated_Pantheon_1 + Defeated_Pantheon_2 + Defeated_Pantheon_3 + NOFLOWER=FALSE"
+  },
+  {
+    "name": "Flower_Quest-Isma",
+    "logic": "Waterways_13 + DREAMNAIL + NOFLOWER=FALSE"
+  },
+  {
+    "name": "Flower_Quest-Marissa",
+    "logic": "(Ruins_Bathhouse[door1] | Ruins_Bathhouse[right1] + Opened_Pleasure_House_Wall) + DREAMNAIL + NOFLOWER=FALSE"
+  },
+  {
+    "name": "Flower_Quest-Mato",
+    "logic": "Room_nailmaster[left1] + LISTEN?TRUE + NOFLOWER=FALSE"
+  },
+  {
+    "name": "Flower_Quest-Midwife",
+    "logic": "Deepnest_41[left2] + LISTEN?TRUE + Wall-Midwife?TRUE + (LANTERN | NOLANTERN?FALSE | DARKROOMS) + NOFLOWER=FALSE"
+  },
+  {
+    "name": "Flower_Quest-Oro",
+    "logic": "Room_nailmaster_03[left1] + Can_Visit_Lemm + LISTEN?TRUE + NOFLOWER=FALSE"
+  },
+  {
+    "name": "Flower_Quest-Pain",
+    "logic": "White_Palace_20[bot1] + Completed_Path_of_Pain + NOFLOWER=FALSE"
+  },
+  {
+    "name": "Flower_Quest-Pale_King",
+    "logic": "*King_Fragment + NOFLOWER=FALSE"
+  },
+  {
+    "name": "Flower_Quest-Radiance",
+    "logic": "*Pale_Ore-Crystal_Peak + DREAMNAIL + NOFLOWER=FALSE"
+  },
+  {
+    "name": "Flower_Quest-Sheo",
+    "logic": "Room_nailmaster_02[left1] + LISTEN?TRUE + NOFLOWER=FALSE"
+  },
+  {
+    "name": "Flower_Quest-White_Lady",
+    "logic": "Room_Queen[left1] + LISTEN?TRUE + NOFLOWER=FALSE"
+  }
+]

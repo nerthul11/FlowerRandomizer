@@ -3,13 +3,16 @@ using FlowerRandomizer.Manager;
 using FlowerRandomizer.Settings;
 using Modding;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace FlowerRandomizer
 {
     public class FlowerRandomizer : Mod, IGlobalSettings<FlowerSettings> 
     {
         new public string GetName() => "FlowerRandomizer";
-        public override string GetVersion() => "1.0.0.3";
+        public override string GetVersion() => "1.0.1.0";
+        public GameObject flowerSource;
         private static FlowerRandomizer _instance;
         public FlowerRandomizer() : base()
         {
@@ -27,8 +30,9 @@ namespace FlowerRandomizer
             }
         }
         public FlowerSettings GS { get; internal set; } = new();
-        public override void Initialize()
+        public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloadedObjects)
         {
+            flowerSource = preloadedObjects["Fungus3_49"]["gg_white_flower"];
             // Ignore completely if Randomizer 4 is inactive
             if (ModHooks.GetMod("Randomizer 4") is Mod)
             {
@@ -40,6 +44,13 @@ namespace FlowerRandomizer
                 Instance.Log("Initialized.");
             }
         }
+        public override List<(string, string)> GetPreloadNames()
+{
+        return new List<(string, string)>
+        {
+            ("Fungus3_49", "gg_white_flower"),
+        };
+}
         public void OnLoadGlobal(FlowerSettings s) => GS = s;
         public FlowerSettings OnSaveGlobal() => GS;
     }   

@@ -3,7 +3,7 @@ using ItemChanger.Locations;
 
 namespace FlowerRandomizer.IC
 {
-    public class AbstractFlowerLocation : AutoLocation
+    public abstract class AbstractFlowerLocation : AutoLocation
     {
         protected override void OnLoad() 
         {
