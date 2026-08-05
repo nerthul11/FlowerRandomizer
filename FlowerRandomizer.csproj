@@ -8,8 +8,8 @@
     <Product>AccessRandomizer</Product>
     <Description>A Randomizer add-on for flower quest lovers.</Description>
     <Copyright>Copyright © </Copyright>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
@@ -73,6 +73,9 @@
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>$(LocalRefs)/Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="ConnectionSettingsRando">
+      <HintPath>$(LocalRefs)/Mods/ConnectionSettingsRando/ConnectionSettingsRando.dll</HintPath>
     </Reference>
     <Reference Include="FStats">
       <HintPath>$(LocalRefs)/Mods/FStats/FStats.dll</HintPath>

@@ -1,3 +1,4 @@
+ConnectionSettingsRando
 ItemChanger
 MenuChanger
 RandoSettingsManager

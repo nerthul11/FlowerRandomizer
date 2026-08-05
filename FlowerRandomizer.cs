@@ -11,7 +11,7 @@ namespace FlowerRandomizer
     public class FlowerRandomizer : Mod, IGlobalSettings<FlowerSettings> 
     {
         new public string GetName() => "FlowerRandomizer";
-        public override string GetVersion() => "1.0.1.0";
+        public override string GetVersion() => "1.0.2.0";
         public GameObject flowerSource;
         private static FlowerRandomizer _instance;
         public FlowerRandomizer() : base()
@@ -38,6 +38,8 @@ namespace FlowerRandomizer
             {
                 Instance.Log("Initializing...");
                 FlowerManager.Hook();
+                if (ModHooks.GetMod("ConnectionSettingsRando") is Mod)
+                    CSR_Interop.Hook();
                 if (ModHooks.GetMod("RandoSettingsManager") is Mod)
                     RSM_Interop.Hook();
 
